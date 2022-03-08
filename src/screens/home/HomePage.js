@@ -26,6 +26,7 @@ export const HomePageStyled = styled.section`
   justify-content: center;
   box-shadow: inset 2000px 0 0 0 rgba(0, 0, 0, 0.5);
   border-color: rgba(0, 0, 0, 1);
+
   .home__content {
   }
   h3 {

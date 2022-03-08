@@ -13,17 +13,19 @@ const CharacterCard = ({ gender, image, name, species, status }) => {
         <p>{species}</p>
         <p>{status}</p>
       </div>
+      <button>See more details</button>
     </CharacterCardWrapper>
   );
 };
 
 const CharacterCardWrapper = styled.section`
-  /* flex-basis: 27%; */
   border: 1px solid #d3d3d2;
   border-radius: 8px;
-  background: #f4f4f4;
-  margin-bottom: 20px;
   width: 220px;
+  min-height: 420px;
+  position: relative;
+  margin: 0px 5px 20px 5px;
+
 
   .characters__card__image-wrapper {
     height: 220px;
@@ -34,7 +36,8 @@ const CharacterCardWrapper = styled.section`
     border-radius: 8px 8px 0px 0px;
   }
   .characters__card__text-wrapper {
-    padding: 10px;
+    padding: 20px;
+    position: relative;
   }
   &:hover {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -46,10 +49,22 @@ const CharacterCardWrapper = styled.section`
   p {
     font-size: 14px;
     font-weight: 300;
-    padding-bottom: 4px;
+    padding-bottom: 6px;
   }
   button {
-    background: #57bd38;
+    bottom: 20px;
+    left: 20px;
+    position: absolute;
+    bottom: 20px;
+    height: 30px;
+    width: 85%;
+    border-radius: 5px;
+    border: 1px solid #57bd38;
+    cursor: pointer;
+    &:hover {
+      background: #57bd38;
+      color: #ffffff;
+    }
   }
 `;
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getCharacters } from "../../api/fetchingAPI";
 import CharacterCard from "./CharacterCard";
+import { Title } from "../common/Title";
 
 const CharactersPage = () => {
   const [charactersData, setCharactersData] = useState([]);
@@ -13,35 +14,47 @@ const CharactersPage = () => {
       try {
         const { data } = await getCharacters(1);
         setCharactersData(data.results);
+        setLoading(false);
         console.log(data);
       } catch (error) {
         console.log(error);
+        setLoading(false);
       }
     };
     getCharactersData();
   }, []);
   return (
     <CharactersContainer>
-      {charactersData &&
-        charactersData.map(
-          ({ gender, image, name, species, status }, index) => (
-            <CharacterCard
-              key={index}
-              {...{ gender, image, name, species, status }}
-            />
-          )
-        )}
+      <Title text="Characters" />
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="characters__main__list-wrapper">
+          {charactersData &&
+            charactersData.map(
+              ({ gender, image, name, species, status }, index) => (
+                <CharacterCard
+                  key={index}
+                  {...{ gender, image, name, species, status }}
+                />
+              )
+            )}
+        </div>
+      )}
     </CharactersContainer>
   );
 };
 
 const CharactersContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   width: 1200px;
   max-width: 100%;
   margin: 0 auto;
+  padding: 0px 20px;
+  .characters__main__list-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 `;
 
 export default CharactersPage;
