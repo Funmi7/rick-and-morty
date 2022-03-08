@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { getCharacters } from "../../api/fetchingAPI";
 import homeBg from "../../assets/home-bg.jpg";
 
 const HomePage = () => {
+  useEffect(() => {
+    const getCharactersData = async () => {
+      try {
+        const { data } = await getCharacters(1);
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getCharactersData();
+  }, []);
+
   return (
     <HomePageStyled>
       <h3>Welcome to a Rick and Morty Fan page</h3>
@@ -16,7 +29,6 @@ export default HomePage;
 
 export const HomePageStyled = styled.section`
   width: 100%;
-  /* width: 900px; */
   height: calc(100vh - 80px);
   background-image: url(${homeBg});
   background-repeat: no-repeat;
@@ -35,7 +47,7 @@ export const HomePageStyled = styled.section`
     font-weight: bold;
     margin-bottom: 50px;
   }
-  p{
+  p {
     color: #ffffff;
     font-size: 20px;
     margin-bottom: 50px;
