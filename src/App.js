@@ -1,10 +1,11 @@
 import React from "react";
 // import styled from "styled-components";
-import Header from "./components/Header.js";
-import WelcomePage from "./components/WelcomePage";
+// import Header from "./screens/Header.js.js";
+// import WelcomePage from "./screens/WelcomePage";
 import { Switch, Route } from "react-router-dom";
-import HomePage from "./components/home/HomePage.js";
-import Navigation from "./components/navigation/Navigation.js";
+import HomePage from "./screens/home/HomePage.js";
+import Navigation from "./screens/navigation/Navigation.js";
+import CharactersPage from "./screens/characters/Characters.js";
 
 export default function App() {
   return (
@@ -12,10 +13,11 @@ export default function App() {
       <Navigation />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Header />
-        <WelcomePage />
+        <Route path="/characters" component={CharactersPage} />
+        {/* <Header />
+        <WelcomePage /> */}
       </Switch>
-</>
+    </>
   );
 }
 

@@ -1,21 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import { getCharacters } from "../../api/fetchingAPI";
 import homeBg from "../../assets/home-bg.jpg";
 
 const HomePage = () => {
-  useEffect(() => {
-    const getCharactersData = async () => {
-      try {
-        const { data } = await getCharacters(1);
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getCharactersData();
-  }, []);
-
   return (
     <HomePageStyled>
       <h3>Welcome to a Rick and Morty Fan page</h3>
