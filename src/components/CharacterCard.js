@@ -31,7 +31,7 @@ export default function CharacterCard(props) {
   return (
 <CharacterCardStyle>
     <div className="main-img">
-      <img src={props.character.image} />
+      <img src={props.character.image} alt="" />
     </div>
     <div className="textContent">
       <h3>{props.character.name}</h3>

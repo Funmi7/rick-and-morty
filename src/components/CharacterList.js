@@ -4,7 +4,7 @@ import CharacterCard from './CharacterCard';
 import SearchForm from './SearchForm';
 
 
-const charactersAPI = 'https://rickandmortyapi.com/api/character/'
+const charactersAPI = 'https://rickandmortyapi.com/api/character/?page=2'
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
