@@ -23,25 +23,23 @@ const CharactersPage = () => {
     };
     getCharactersData();
   }, []);
+
   return (
-    <CharactersContainer>
-      <Title text="Characters" />
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <div className="characters__main__list-wrapper">
-          {charactersData &&
-            charactersData.map(
-              ({ gender, image, name, species, status }, index) => (
-                <CharacterCard
-                  key={index}
-                  {...{ gender, image, name, species, status }}
-                />
-              )
-            )}
-        </div>
-      )}
-    </CharactersContainer>
+    <>
+      <CharactersContainer>
+        <Title text="Characters" />
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <div className="characters__main__list-wrapper">
+            {charactersData &&
+              charactersData.map((characterData, index) => (
+                <CharacterCard key={index} {...{ characterData }} />
+              ))}
+          </div>
+        )}
+      </CharactersContainer>
+    </>
   );
 };
 

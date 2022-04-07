@@ -11,6 +11,7 @@ const Navigation = () => {
             to="/"
             className="navigation__nav-links"
             activeClassName="navigation__nav-links-active"
+            exact
           >
             Home
           </NavLink>

@@ -1,20 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import CharacterModal from "../modal/components/CharacterModal";
 
-const CharacterCard = ({ gender, image, name, species, status }) => {
+const CharacterCard = ({ characterData }) => {
+  const { image, name, gender, species, status } = characterData;
+  const [modalOpen, setModalOpen] = useState(false);
+  const [characterDetails, setCharacterDetails] = useState({});
+
+  const handleButtonClick = () => {
+    setModalOpen(true);
+    setCharacterDetails(characterData);
+  };
+
   return (
-    <CharacterCardWrapper>
-      <div className="characters__card__image-wrapper">
-        <img src={image} alt={`${name} pic`} />
-      </div>
-      <div className="characters__card__text-wrapper">
-        <h4>{name}</h4>
-        <p>{gender}</p>
-        <p>{species}</p>
-        <p>{status}</p>
-      </div>
-      <button>See more details</button>
-    </CharacterCardWrapper>
+    <>
+      <CharacterCardWrapper>
+        <div className="characters__card__image-wrapper">
+          <img src={image} alt={`${name} pic`} />
+        </div>
+        <div className="characters__card__text-wrapper">
+          <h4>{name}</h4>
+          <p>{gender}</p>
+          <p>{species}</p>
+          <p>{status}</p>
+        </div>
+        <button onClick={handleButtonClick}>See more details</button>
+      </CharacterCardWrapper>
+      <CharacterModal
+        modalOpen={modalOpen}
+        closeModal={() => setModalOpen(false)}
+        characterDetails={characterDetails}
+      />
+    </>
   );
 };
 
@@ -25,7 +42,6 @@ const CharacterCardWrapper = styled.section`
   min-height: 420px;
   position: relative;
   margin: 0px 5px 20px 5px;
-
 
   .characters__card__image-wrapper {
     height: 220px;
