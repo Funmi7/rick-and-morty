@@ -17,3 +17,33 @@ export const backCaret = (
     />
   </svg>
 ); 
+
+export const previousIcon = (
+  <svg
+    width="9"
+    height="12"
+    viewBox="0 0 9 12"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M8.26306 1.41L6.84915 0L0.83252 6L6.84915 12L8.26306 10.59L3.67037 6L8.26306 1.41Z"
+      fill="#57bd38"
+    />
+  </svg>
+);
+
+export const nextIcon = (
+  <svg
+    width="8"
+    height="12"
+    viewBox="0 0 8 12"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M0.491331 1.41L1.90524 0L7.92188 6L1.90524 12L0.491331 10.59L5.08403 6L0.491331 1.41Z"
+      fill="#57bd38"
+    />
+  </svg>
+);

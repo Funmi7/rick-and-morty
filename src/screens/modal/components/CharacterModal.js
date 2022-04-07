@@ -18,7 +18,10 @@ const CharacterModal = ({ modalOpen, closeModal, characterDetails }) => {
           <p>{species}</p>
           <p>{location?.name}</p>
           <p>{status}</p>
-          <p>Appeared on {episode?.length} episodes</p>
+          <p>
+            Appeared on {episode?.length}{" "}
+            {episode?.length === 1 ? "episode" : "episodes"}
+          </p>
         </article>
       </CharacterModalStyled>
     </GeneralModal>
@@ -28,14 +31,14 @@ const CharacterModal = ({ modalOpen, closeModal, characterDetails }) => {
 export default CharacterModal;
 
 const CharacterModalStyled = styled.div`
-  width: 500px;
-  min-height: 300px;
+  width: 450px;
+  min-height: 250px;
   display: flex;
   align-items: center;
-  padding: 0px 30px;
+  padding: 0px 0px 0px 20px;
 
   figure {
-    width: 40%;
+    width: 45%;
     height: 100%;
     margin: 0px;
     img {
@@ -43,15 +46,16 @@ const CharacterModalStyled = styled.div`
       max-width: 100%;
     }
   }
-  article{
+  article {
     margin-left: 40px;
-  h3, h4{
-    margin-bottom: 15px;
-  }
-  p{
-    font-size: 16px;
-    font-weight: 300;
-    padding-bottom: 10px;
-  }
+    h3,
+    h4 {
+      margin-bottom: 15px;
+    }
+    p {
+      font-size: 16px;
+      font-weight: 300;
+      padding-bottom: 10px;
+    }
   }
 `;

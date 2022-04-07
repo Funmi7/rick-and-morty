@@ -3,26 +3,39 @@ import styled from "styled-components";
 import { getCharacters } from "../../api/fetchingAPI";
 import CharacterCard from "./CharacterCard";
 import { Title } from "../common/Title";
+import Pagination from "../common/pagination/Pagination";
 
 const CharactersPage = () => {
   const [charactersData, setCharactersData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [charactersCount, setCharactersCount] = useState(0);
+
+  const indexOfLastTransaction = currentPage * 10;
+  const indexOfFirstTransaction = indexOfLastTransaction - 10 + 1;
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    setPageNumber(pageNumber);
+  };
 
   useEffect(() => {
     const getCharactersData = async () => {
       setLoading(true);
       try {
-        const { data } = await getCharacters(1);
-        setCharactersData(data.results);
+        const { data } = await getCharacters(pageNumber);
         setLoading(false);
         console.log(data);
+        setCharactersData(data.results);
+        setCharactersCount(data.info.count);
       } catch (error) {
         console.log(error);
         setLoading(false);
       }
     };
     getCharactersData();
-  }, []);
+  }, [pageNumber]);
 
   return (
     <>
@@ -38,6 +51,13 @@ const CharactersPage = () => {
               ))}
           </div>
         )}
+        <Pagination
+          currentPage={currentPage}
+          charactersCount={charactersCount}
+          paginate={paginate}
+          indexOfFirstTransaction={indexOfFirstTransaction}
+          indexOfLastTransaction={indexOfLastTransaction}
+        />
       </CharactersContainer>
     </>
   );
@@ -47,7 +67,7 @@ const CharactersContainer = styled.div`
   width: 1200px;
   max-width: 100%;
   margin: 0 auto;
-  padding: 0px 20px;
+  padding: 0px 20px 60px 0px;
   .characters__main__list-wrapper {
     display: flex;
     flex-wrap: wrap;
