@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { getCharacters } from "../../api/fetchingAPI";
+import {
+  getCharacters,
+  getCharactersByGender,
+  getCharactersByName,
+  getCharactersBySpecies,
+  getCharactersByStatus,
+} from "../../api/fetchingAPI";
 import CharacterCard from "./CharacterCard";
 import { Title } from "../common/Title";
 import Pagination from "../common/pagination/Pagination";
@@ -15,6 +21,7 @@ const CharactersPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [charactersCount, setCharactersCount] = useState(0);
   const [filterParam, setFilterParam] = useState(filterParamItems[0]);
+  const [searchValue, setSearchValue] = useState("");
 
   const indexOfLastTransaction = currentPage * 10;
   const indexOfFirstTransaction = indexOfLastTransaction - 10 + 1;
@@ -22,6 +29,54 @@ const CharactersPage = () => {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
     setPageNumber(pageNumber);
+  };
+
+  const handleSearchButtonClick = async () => {
+    if (filterParam === "Name") {
+      const { data } = await getCharactersByName(searchValue);
+      setLoading(true);
+      try {
+        setLoading(false);
+        setCharactersData(data.results);
+        setCharactersCount(data.info.count);
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
+    } else if (filterParam === "Status") {
+      const { data } = await getCharactersByStatus(searchValue);
+      setLoading(true);
+      try {
+        setLoading(false);
+        setCharactersData(data.results);
+        setCharactersCount(data.info.count);
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
+    } else if (filterParam === "Species") {
+      const { data } = await getCharactersBySpecies(searchValue);
+      setLoading(true);
+      try {
+        setLoading(false);
+        setCharactersData(data.results);
+        setCharactersCount(data.info.count);
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
+    } else if (filterParam === "Gender") {
+      const { data } = await getCharactersByGender(searchValue);
+      setLoading(true);
+      try {
+        setLoading(false);
+        setCharactersData(data.results);
+        setCharactersCount(data.info.count);
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
+    }
   };
 
   useEffect(() => {
@@ -38,8 +93,10 @@ const CharactersPage = () => {
         setLoading(false);
       }
     };
-    getCharactersData();
-  }, [pageNumber]);
+    if (searchValue === "") {
+      getCharactersData();
+    }
+  }, [pageNumber, searchValue]);
 
   return (
     <>
@@ -50,6 +107,9 @@ const CharactersPage = () => {
             filterParamItems={filterParamItems}
             setFilterParam={setFilterParam}
             filterParam={filterParam}
+            handleSearchButtonClick={handleSearchButtonClick}
+            setSearchValue={setSearchValue}
+            searchValue={searchValue}
           />
         </div>
         {loading ? (

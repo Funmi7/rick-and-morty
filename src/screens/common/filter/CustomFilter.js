@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import CustomeDropdown from "./CustomDropdown";
 
-const CustomFilter = ({ filterParamItems, setFilterParam, filterParam }) => {
+const CustomFilter = ({
+  filterParamItems,
+  setFilterParam,
+  filterParam,
+  handleSearchButtonClick,
+  setSearchValue,
+  searchValue
+}) => {
   const [openFilter, setOpenFilter] = useState(false);
   return (
     <CustomFilterStyled>
@@ -19,8 +26,13 @@ const CustomFilter = ({ filterParamItems, setFilterParam, filterParam }) => {
               filterParam={filterParam}
             />
           </button>
-          <input />
-          <button className="custom-filter__filter-input-search">Search</button>
+          <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
+          <button
+            className="custom-filter__filter-input-search"
+            onClick={handleSearchButtonClick}
+          >
+            Search
+          </button>
         </div>
       )}
     </CustomFilterStyled>
@@ -70,6 +82,7 @@ const CustomFilterStyled = styled.div`
       height: 95%;
       border: none;
       outline: none;
+      padding-left: 15px;
     }
     .custom-filter__filter-input-search {
       width: 60px;
