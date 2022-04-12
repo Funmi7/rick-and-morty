@@ -4,6 +4,9 @@ import { getCharacters } from "../../api/fetchingAPI";
 import CharacterCard from "./CharacterCard";
 import { Title } from "../common/Title";
 import Pagination from "../common/pagination/Pagination";
+import CustomFilter from "../common/filter/CustomFilter";
+
+const filterParamItems = ["Name", "Status", "Species", "Gender"];
 
 const CharactersPage = () => {
   const [charactersData, setCharactersData] = useState([]);
@@ -11,6 +14,7 @@ const CharactersPage = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [charactersCount, setCharactersCount] = useState(0);
+  const [filterParam, setFilterParam] = useState(filterParamItems[0]);
 
   const indexOfLastTransaction = currentPage * 10;
   const indexOfFirstTransaction = indexOfLastTransaction - 10 + 1;
@@ -40,7 +44,14 @@ const CharactersPage = () => {
   return (
     <>
       <CharactersContainer>
-        <Title text="Characters" />
+        <div className="characters__heading-wrapper">
+          <Title text="Characters" />
+          <CustomFilter
+            filterParamItems={filterParamItems}
+            setFilterParam={setFilterParam}
+            filterParam={filterParam}
+          />
+        </div>
         {loading ? (
           <p>Loading...</p>
         ) : (
@@ -72,6 +83,13 @@ const CharactersContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    /* height: 50px; */
+  }
+  .characters__heading-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
   }
 `;
 

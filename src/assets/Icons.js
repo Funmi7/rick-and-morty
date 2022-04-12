@@ -47,3 +47,26 @@ export const nextIcon = (
     />
   </svg>
 );
+export const dropdownCaret = (
+  <svg
+    width="14"
+    height="7"
+    viewBox="0 0 14 7"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M7 7L13.9282 0.25H0.0717969L7 7Z" fill="black" />
+  </svg>
+);
+
+export const activeDropdownCaret = (
+  <svg
+    width="14"
+    height="7"
+    viewBox="0 0 14 7"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M7 7L13.9282 0.25H0.0717969L7 7Z" fill="white" />
+  </svg>
+);

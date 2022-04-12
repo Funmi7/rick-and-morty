@@ -6,7 +6,7 @@ body {
   outline: 0;
 }
 html {
-font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 :-webkit-any(button) {
   border: none;
@@ -64,4 +64,5 @@ header h1 {
 
 .search-form {
   margin: 0 auto;
+
 }
