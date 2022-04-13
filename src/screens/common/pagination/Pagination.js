@@ -10,7 +10,7 @@ const Pagination = ({
   currentPage,
   indexOfFirstTransaction,
   indexOfLastTransaction,
-  pageSize = 10,
+  pageSize = 20,
 }) => {
   const paginationRange = usePagination({
     currentPage,
