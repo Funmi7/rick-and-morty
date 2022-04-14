@@ -143,13 +143,22 @@ const CharactersContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-   align-items: center;
+    align-items: center;
+
+    @media (max-width:463px){
+      justify-content: center;
+    }
   }
   .characters__heading-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
+
+    @media (max-width: 720px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 `;
 

@@ -11,5 +11,8 @@ export const Title = ({ text }) => {
 const TitleStyled = styled.h2`
   font-size: 28px;
   font-weight: 700;
-  margin-bottom: 20px;
+
+  @media (max-width: 720px) {
+    margin-bottom: 20px;
+  }
 `;

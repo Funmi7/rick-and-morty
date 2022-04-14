@@ -8,7 +8,7 @@ const CustomFilter = ({
   filterParam,
   handleSearchButtonClick,
   setSearchValue,
-  searchValue
+  searchValue,
 }) => {
   const [openFilter, setOpenFilter] = useState(false);
   return (
@@ -26,7 +26,10 @@ const CustomFilter = ({
               filterParam={filterParam}
             />
           </button>
-          <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
+          <input
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
           <button
             className="custom-filter__filter-input-search"
             onClick={handleSearchButtonClick}
@@ -67,6 +70,7 @@ const CustomFilterStyled = styled.div`
     display: flex;
     border: 1px solid #e9e9e9;
     border-radius: 8px;
+    max-width: 100%;
     button {
       width: 150px;
       height: 100%;
@@ -86,6 +90,17 @@ const CustomFilterStyled = styled.div`
     }
     .custom-filter__filter-input-search {
       width: 60px;
+    }
+    @media (max-width: 548px) {
+      width: 100%;
+    }
+    @media (max-width: 375px) {
+      button {
+        width: 100px;
+      }
+      input {
+        width: calc(100% - 100px);
+      }
     }
   }
 `;

@@ -45,6 +45,7 @@ const CharacterCardWrapper = styled.section`
 
   .characters__card__image-wrapper {
     height: 220px;
+    width: 100%;
   }
 
   img {
@@ -81,6 +82,17 @@ const CharacterCardWrapper = styled.section`
       background: #57bd38;
       color: #ffffff;
     }
+  }
+
+  @media (max-width: 463px) {
+    width: 64%;
+    min-height: 480px;
+    .characters__card__image-wrapper {
+      height: auto;
+    }
+  }
+  @media (max-width: 385px) {
+    width: 78%;
   }
 `;
 
