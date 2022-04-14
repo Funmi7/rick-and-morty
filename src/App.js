@@ -14,8 +14,6 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/characters" component={CharactersPage} />
-        {/* <Header />
-        <WelcomePage /> */}
       </Switch>
     </>
   );
