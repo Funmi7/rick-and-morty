@@ -138,7 +138,7 @@ const CharactersContainer = styled.div`
   width: 1200px;
   max-width: 100%;
   margin: 0 auto;
-  padding: 0px 20px 60px 20px;
+  padding: 50px 20px 60px 20px;
   .characters__main__list-wrapper {
     display: flex;
     flex-wrap: wrap;

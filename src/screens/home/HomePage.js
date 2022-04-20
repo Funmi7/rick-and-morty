@@ -1,13 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import homeBg from "../../assets/home-bg.jpg";
+import {useHistory} from "react-router-dom"
 
 const HomePage = () => {
+  const history = useHistory();
   return (
     <HomePageStyled>
       <h3>Welcome to a Rick and Morty Fan page</h3>
       <p>Welcome to the ultimate fan site!</p>
-      <button>Check Characters now</button>
+      <button onClick={() => history.push("/characters")}>Check Characters now</button>
     </HomePageStyled>
   );
 };
@@ -26,9 +28,6 @@ export const HomePageStyled = styled.section`
   justify-content: center;
   box-shadow: inset 2000px 0 0 0 rgba(0, 0, 0, 0.5);
   border-color: rgba(0, 0, 0, 1);
-
-  .home__content {
-  }
   h3 {
     color: #ffffff;
     font-size: 56px;

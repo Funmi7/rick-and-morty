@@ -51,7 +51,7 @@ export default Navigation;
 const NavigationContainer = styled.div`
   box-shadow: rgb(0 0 0 / 5%) 0px 4px 13px;
   width: 100%;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
   padding: 0px 20px;
 
   @media (max-width: 499px) {
