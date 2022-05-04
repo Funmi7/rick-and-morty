@@ -16,11 +16,11 @@ const CharacterModal = ({ modalOpen, closeModal, characterDetails }) => {
           <h3>{name}</h3>
           <h4>{gender}</h4>
           <p>{species}</p>
-          <p>{location?.name}</p>
+          <p>{location && location.name}</p>
           <p>{status}</p>
           <p>
-            Appeared on {episode?.length}{" "}
-            {episode?.length === 1 ? "episode" : "episodes"}
+            Appeared on {episode && episode.length}{" "}
+            {episode && episode.length === 1 ? "episode" : "episodes"}
           </p>
         </article>
       </CharacterModalStyled>
