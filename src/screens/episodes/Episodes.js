@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { getEpisdoes } from "../../api/fetchingAPI";
+import {
+  getEpisdoes,
+  getEpisodesByEpisode,
+  getEpisodesByName,
+} from "../../api/fetchingAPI";
 import CustomFilter from "../common/filter/CustomFilter";
 import Pagination from "../common/pagination/Pagination";
 import { Title } from "../common/Title";
 import { LocationsContainer } from "../locations/Locations";
 import EpisodeCard from "./EpisodeCard";
+
+const filterParamItems = ["Name", "Episode"];
 
 const Episodes = () => {
   const [loading, setLoading] = useState(false);
@@ -15,7 +21,7 @@ const Episodes = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [episodesCount, setEpisodesCount] = useState(0);
 
-  //    const [filterParam, setFilterParam] = useState(filterParamItems[0]);
+  const [filterParam, setFilterParam] = useState(filterParamItems[0]);
   const [searchValue, setSearchValue] = useState("");
 
   const paginate = (pageNumber) => {
@@ -25,6 +31,32 @@ const Episodes = () => {
 
   const indexOfLastTransaction = currentPage * 10;
   const indexOfFirstTransaction = indexOfLastTransaction - 10 + 1;
+
+  const handleSearchButtonClick = async () => {
+    if (filterParam === "Name") {
+      const { data } = await getEpisodesByName(searchValue);
+      setLoading(true);
+      try {
+        setLoading(false);
+        setEpisodesData(data.results);
+        setEpisodesCount(data.info.count);
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
+    } else if (filterParam === "Episode") {
+      const { data } = await getEpisodesByEpisode(searchValue);
+      setLoading(true);
+      try {
+        setLoading(false);
+        setEpisodesData(data.results);
+        setEpisodesCount(data.info.count);
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
+    }
+  };
 
   useEffect(() => {
     const getEpisodesData = async () => {
@@ -38,18 +70,20 @@ const Episodes = () => {
         setLoading(false);
       }
     };
-    getEpisodesData();
-  }, [pageNumber]);
+    if (searchValue === "") {
+      getEpisodesData();
+    }
+  }, [pageNumber, searchValue]);
 
   return (
     <LocationsContainer>
       <div className="locations__heading-wrapper">
         <Title text="Episodes" />
         <CustomFilter
-          //   filterParamItems={filterParamItems}
-          //   setFilterParam={setFilterParam}
-          //   filterParam={filterParam}
-          //   handleSearchButtonClick={handleSearchButtonClick}
+          filterParamItems={filterParamItems}
+          setFilterParam={setFilterParam}
+          filterParam={filterParam}
+          handleSearchButtonClick={handleSearchButtonClick}
           setSearchValue={setSearchValue}
           searchValue={searchValue}
         />
@@ -69,6 +103,5 @@ const Episodes = () => {
     </LocationsContainer>
   );
 };
-
 
 export default Episodes;

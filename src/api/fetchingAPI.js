@@ -40,3 +40,11 @@ export const getLocationsByDimension = (dimension) => {
 export const getEpisdoes = (pageNumber) => {
   return axiosGetConfig(`${urls.episodes}?page=${pageNumber}`);
 };
+
+export const getEpisodesByName = (name) => {
+  return axiosGetConfig(`${urls.episodes}?name=${name}`);
+};
+
+export const getEpisodesByEpisode = (episode) => {
+  return axiosGetConfig(`${urls.episodes}?episode=${episode}`);
+};
