@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import {
   getEpisdoes,
   getEpisodesByEpisode,
@@ -88,11 +87,15 @@ const Episodes = () => {
           searchValue={searchValue}
         />
       </div>
-      <div className="locations__card-wrap">
-        {episodesData.map((episodeData, index) => (
-          <EpisodeCard key={index} {...{ episodeData }} />
-        ))}
-      </div>
+      {loading ? (
+        <p>Loading</p>
+      ) : (
+        <div className="locations__card-wrap">
+          {episodesData.map((episodeData, index) => (
+            <EpisodeCard key={index} {...{ episodeData }} />
+          ))}
+        </div>
+      )}
       <Pagination
         currentPage={currentPage}
         charactersCount={episodesCount}

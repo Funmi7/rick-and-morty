@@ -28,6 +28,7 @@ export const HomePageStyled = styled.section`
   justify-content: center;
   box-shadow: inset 2000px 0 0 0 rgba(0, 0, 0, 0.5);
   border-color: rgba(0, 0, 0, 1);
+  padding: 20px;
   h3 {
     color: #ffffff;
     font-size: 56px;
@@ -46,10 +47,13 @@ export const HomePageStyled = styled.section`
     border-radius: 8px;
     background: #ffffff;
     font-size: 16px;
+    max-width: 100%;
     cursor: pointer;
     &:hover {
       background: #57bd38;
       color: #ffffff;
     }
+  }
+  @media (max-width: 330px) {
   }
 `;

@@ -35,7 +35,7 @@ const MobileMenu = ({ open }) => {
         </div>
         <div className="mobile-navigation__link-wrap">
           <NavLink
-            to="/locations"
+            to="/episodes"
             className="navigation__nav-links"
             activeClassName="navigation__nav-links-active"
           >

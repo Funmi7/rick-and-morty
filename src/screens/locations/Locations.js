@@ -133,11 +133,19 @@ export const LocationsContainer = styled.section`
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 463px) {
+      justify-content: center;
+    }
   }
   .locations__heading-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
+    @media (max-width: 720px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 `;
