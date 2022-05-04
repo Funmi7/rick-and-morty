@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { getEpisdoes } from "../../api/fetchingAPI";
 import CustomFilter from "../common/filter/CustomFilter";
+import Pagination from "../common/pagination/Pagination";
 import { Title } from "../common/Title";
 import { LocationsContainer } from "../locations/Locations";
 import EpisodeCard from "./EpisodeCard";
@@ -58,6 +59,13 @@ const Episodes = () => {
           <EpisodeCard key={index} {...{ episodeData }} />
         ))}
       </div>
+      <Pagination
+        currentPage={currentPage}
+        charactersCount={episodesCount}
+        paginate={paginate}
+        indexOfFirstTransaction={indexOfFirstTransaction}
+        indexOfLastTransaction={indexOfLastTransaction}
+      />
     </LocationsContainer>
   );
 };

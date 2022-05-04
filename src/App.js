@@ -20,7 +20,3 @@ export default function App() {
   );
 }
 
-
-// const AppWrapper = styled.div`
-//   width: 100%;
-// `;
