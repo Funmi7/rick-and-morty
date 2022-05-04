@@ -36,3 +36,7 @@ export const getLocationsByType = (type) => {
 export const getLocationsByDimension = (dimension) => {
   return axiosGetConfig(`${urls.locations}?dimension=${dimension}`, null);
 };
+
+export const getEpisdoes = (pageNumber) => {
+  return axiosGetConfig(`${urls.episodes}?page=${pageNumber}`);
+};

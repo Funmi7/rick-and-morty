@@ -75,7 +75,6 @@ const Locations = () => {
       try {
         const { data } = await getLocations(pageNumber);
         setLoading(false);
-        console.log(data);
         setLocationsData(data.results);
         setLocationsCount(data.info.count);
       } catch (error) {
@@ -123,7 +122,7 @@ const Locations = () => {
 
 export default Locations;
 
-const LocationsContainer = styled.section`
+export const LocationsContainer = styled.section`
   width: 1200px;
   max-width: 100%;
   margin: 0 auto;
