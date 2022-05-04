@@ -6,6 +6,7 @@ import { Switch, Route } from "react-router-dom";
 import HomePage from "./screens/home/HomePage.js";
 import Navigation from "./screens/navigation/Navigation.js";
 import CharactersPage from "./screens/characters/Characters.js";
+import LocationsPage from "./screens/locations/Locations.js";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/characters" component={CharactersPage} />
+        <Route path="/locations" component={LocationsPage} />
       </Switch>
     </>
   );

@@ -8,6 +8,10 @@ body {
 html {
   font-family: "Poppins", sans-serif;
 }
+* {
+  box-sizing: border-box;
+}
+
 :-webkit-any(button) {
   border: none;
   background-color: transparent;

@@ -29,7 +29,11 @@ const Navigation = () => {
             >
               Characters
             </NavLink>
-            <NavLink to="/locations" className="navigation__nav-links">
+            <NavLink
+              to="/locations"
+              className="navigation__nav-links"
+              activeClassName="navigation__nav-links-active"
+            >
               Locations
             </NavLink>
             <NavLink to="/episodes" className="navigation__nav-links">
