@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import {
   getEpisdoes,
   getEpisodesByEpisode,
@@ -88,7 +90,7 @@ const Episodes = () => {
         />
       </div>
       {loading ? (
-        <p>Loading</p>
+        <Skeleton count={20} />
       ) : (
         <div className="locations__card-wrap">
           {episodesData.map((episodeData, index) => (

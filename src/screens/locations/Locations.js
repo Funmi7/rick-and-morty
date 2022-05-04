@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import styled from "styled-components";
 import {
   getLocations,
@@ -101,7 +103,7 @@ const Locations = () => {
         />
       </div>
       {loading ? (
-        <p>Loading...</p>
+        <Skeleton count={20} />
       ) : (
         <div className="locations__card-wrap">
           {locationsData.map((locationData, index) => (

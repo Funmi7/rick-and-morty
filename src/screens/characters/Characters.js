@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import {
   getCharacters,
   getCharactersByGender,
@@ -85,7 +87,6 @@ const CharactersPage = () => {
       try {
         const { data } = await getCharacters(pageNumber);
         setLoading(false);
-        console.log(data);
         setCharactersData(data.results);
         setCharactersCount(data.info.count);
       } catch (error) {
@@ -113,12 +114,15 @@ const CharactersPage = () => {
           />
         </div>
         {loading ? (
-          <p>Loading...</p>
+          <Skeleton count={20} />
         ) : (
           <div className="characters__main__list-wrapper">
             {charactersData &&
               charactersData.map((characterData, index) => (
-                <CharacterCard key={index} {...{ characterData }} />
+                <CharacterCard
+                  key={index}
+                  {...{ characterData }}
+                />
               ))}
           </div>
         )}
@@ -145,7 +149,7 @@ const CharactersContainer = styled.div`
     justify-content: space-between;
     align-items: center;
 
-    @media (max-width:463px){
+    @media (max-width: 463px) {
       justify-content: center;
     }
   }
